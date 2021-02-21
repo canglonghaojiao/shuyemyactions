@@ -106,8 +106,6 @@ async function entertainment() {
     await submitShareCode({ 'share_code': $.shareCode, 'pt_key': $.UserName });
   } else {
     if ($.isNode()) {
-      await notify.sendNotify(`${$.name}运行完成`, `京东账号${$.index} ${$.nickName || $.UserName}\n京东说‘本活动与你无缘，请关注其他活动。’`);
-    } else {
       await $.msg(`${$.name}运行完成`, `京东说‘本活动与你无缘，请关注其他活动。’`);
     }
   }
