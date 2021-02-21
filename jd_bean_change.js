@@ -61,6 +61,7 @@ if ($.isNode()) {
       $.errorMsg = '';
       $.isLogin = true;
       $.nickName = '';
+      $.levelName = '';
       $.message = '';
       $.balance = 0;
       $.expiredBalance = 0;
@@ -89,9 +90,9 @@ if ($.isNode()) {
 async function showMsg() {
   if ($.errorMsg) return
   if ($.isNode()) {
-    await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message}\n当前红包：${$.balance}元🧧\n即将过期红包：${$.expiredBalance}元🧧`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
+    await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n账户等级：${$.levelName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message}\n当前红包：${$.balance}元🧧\n即将过期红包：${$.expiredBalance}元🧧`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
   }
-  $.msg($.name, '', `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message}\n当前红包：${$.balance}元🧧\n即将过期红包：${$.expiredBalance}元🧧`, {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
+  $.msg($.name, '', `账号${$.index}：${$.nickName || $.UserName}\n账户等级：${$.levelName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message}\n当前红包：${$.balance}元🧧\n即将过期红包：${$.expiredBalance}元🧧`, {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
 }
 async function bean() {
   // console.log(`北京时间零点时间戳:${parseInt((Date.now() + 28800000) / 86400000) * 86400000 - 28800000}`);
@@ -162,12 +163,12 @@ function TotalBean() {
         } else {
           if (data) {
             data = JSON.parse(data);
-            console.log(data.base.levelName)
             if (data['retcode'] === 13) {
               $.isLogin = false; //cookie过期
               return
             }
             $.nickName = data['base'].nickname;
+            $.levelName = data['base'].levelName;
             if (data['retcode'] === 0) {
               $.beanCount = data['base'].jdNum;
             }
