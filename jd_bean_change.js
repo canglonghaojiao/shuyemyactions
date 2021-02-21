@@ -161,8 +161,8 @@ function TotalBean() {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           if (data) {
-            console.log(data.base.levelName)
             data = JSON.parse(data);
+            console.log(data.base.levelName)
             if (data['retcode'] === 13) {
               $.isLogin = false; //cookie过期
               return
