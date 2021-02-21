@@ -104,11 +104,6 @@ async function entertainment() {
     await draw();
     console.log(`好友助力码【 ${$.shareCode} 】`);
     await submitShareCode({ 'share_code': $.shareCode, 'pt_key': $.UserName });
-    if ($.isNode()) {
-      await notify.sendNotify(`${$.name}运行完成`, `京东账号${$.index} ${$.nickName || $.UserName}\n${message}`);
-    } else {
-      await $.msg(`${$.name}运行完成`, message);
-    }
   } else {
     if ($.isNode()) {
       await notify.sendNotify(`${$.name}运行完成`, `京东账号${$.index} ${$.nickName || $.UserName}\n京东说‘本活动与你无缘，请关注其他活动。’`);

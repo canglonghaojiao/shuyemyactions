@@ -14,7 +14,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '', originCookie = '', message = '';
 let helpAuthor = true;//为作者助力的开关
-const ACT_ID_List = ['eda317007dff44c2b23e513df195862d', 'f28f6b74a1714451acb7f8b7cdb2527a',];
+const ACT_ID_List = ['eda317007dff44c2b23e513df195862d', 'f28f6b74a1714451acb7f8b7cdb2527a','8194c0e37a5543da94be8fe5c4caee74',];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
