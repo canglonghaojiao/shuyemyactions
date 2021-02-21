@@ -376,7 +376,7 @@ function yjy() {
             if (data.code === 200) {
               for (let vo of data.data) {
                 pname = $.product_lists.filter((x) => x.id === vo.product_id)[0].name;
-                if ((Date.now()-vo.start_at * 1000) < 2500) {
+                if ((Date.now() - vo.start_at * 1000) < 2500) {
                   console.log(`添加${vo.num}个${pname}进行生产`);
                 }
               }
@@ -409,24 +409,29 @@ function yjy() {
         ws.send(JSON.stringify(msg.stats));
         await $.wait(3000);
         ws.send(JSON.stringify(msg.shopProducts));
-        // 执行签到任务
-        await signIn();
-        //执行浏览会场任务
-        await meetingplace();
-        //执行浏览店铺任务
-        await shopView();
-        //执行浏览商品任务
-        await productView();
-        //执行每日问答
-        await answerQuestion();
-        //材料生产相关操作
-        await meterial();
-        //产品生产相关操作
-        await productProduce();
-        // 执行售卖任务
-        await sellTask();
-        //兑换福利
-        await exchange();
+        if ($.hours === 0) {
+          //兑换福利
+          await exchange();
+        } else {
+          // 执行签到任务
+          await signIn();
+          //执行浏览会场任务
+          await meetingplace();
+          //执行浏览店铺任务
+          await shopView();
+          //执行浏览商品任务
+          await productView();
+          //执行每日问答
+          await answerQuestion();
+          //材料生产相关操作
+          await meterial();
+          //产品生产相关操作
+          await productProduce();
+          // 执行售卖任务
+          await sellTask();
+          //兑换福利
+          await exchange();
+        }
       }
       await $.wait(10000);
       if (helpAuthor) {
