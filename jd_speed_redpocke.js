@@ -162,7 +162,7 @@ function invite() {
     body: dataString
   };
   $.post(options, (err, resp, data) => {
-    // console.log(data)
+     //console.log(data)
   })
 }
 
