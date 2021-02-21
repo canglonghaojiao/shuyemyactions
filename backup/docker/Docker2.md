@@ -55,10 +55,13 @@
 5.自动更新Docker容器（建议安装，能够自动同步我的docker镜像）
 安装`containrrr/watchtower`可以自动更新容器
 
-	docker run -d \
-	--name watchtower \
-	-v /var/run/docker.sock:/var/run/docker.sock \
-	containrrr/watchtower \
+    docker run -d \
+    --name watchtower \
+    --restart unless-stopped \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    containrrr/watchtower -c \
+    --schedule "0 3 * * * *" \
+    jd
 
 ### 注意：
 1. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现容器启动成功…字样才代表启动成功（不是以此结束的请更新镜像），按`Ctrl+C`退出查看日志。
