@@ -29,10 +29,10 @@
 
 喜马拉雅极速版专属环境变量[点击查看](backup/xmly/xmly.md)
 
-lxk0301-环境变量合集（Secrets）配置[点击查看](https://gitee.com/lxk0301/jd_scripts/blob/master/githubAction.md)
+lxk0301-环境变量合集（Secrets）配置[点击查看](backup/githubAction.md)
 
 
-> 具体如何取 cookie 如何配置,可参考 [lxk0301 的获取京东Cookies教程](https://gitee.com/lxk0301/jd_scripts/blob/master/backUp/GetJdCookie.md)
+> 具体如何取 cookie 如何配置,可参考 [lxk0301 的获取京东Cookies教程](backUp/GetJdCookie.md)
 
 ### 二丶[Docker2 V3 gitee库使用教程](backup/docker/Docker2.md)
 
