@@ -12,37 +12,31 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - name: Checkout
-        run: |
-          git clone https://github.com/whyour/hundun.git ~/hundun
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: npm install
-        run: |
-          cd ~/hundun
-          python -m pip install --upgrade pip
-          pip install requests
-          pip install rsa
-          pip install python-dateutil
-      - name: '运行 【喜马拉雅可提现】'
-        run: |
-          cd ~/hundun
-          python3 quanx/xmly_speed.py
-        env:
-          
-              
-              XMLY_ACCUMULATE_TIME: ${{ github.event.client_payload.XMLY_ACCUMULATE_TIME || secrets.XMLY_ACCUMULATE_TIME }}            
-              XMLY_ACCUMULATE_INDEX: ${{ github.event.client_payload.XMLY_ACCUMULATE_INDEX || secrets.XMLY_ACCUMULATE_INDEX }}
-              XMLY_ACCUMULATE_HOURS: ${{ github.event.client_payload.XMLY_ACCUMULATE_HOURS || secrets.XMLY_ACCUMULATE_HOURS }}
-              XMLY_ANDROID_AGENT: ${{ github.event.client_payload.XMLY_ANDROID_AGENT || secrets.XMLY_ANDROID_AGENT }}
-              XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}  #必须 cookie 多账号 \n 分割
-              AUTO_TAKE_OUT: ${{ secrets.AUTO_TAKE_OUT }}  #非必须 是否自动提现支付宝20
-              BARK: ${{ secrets.BARK }}  #非必须 bark通知
-              SCKEY: ${{ secrets.SCKEY }}  #非必须 server酱通知
-              TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}  #非必须 tg机器人token
-              TG_USER_ID: ${{ secrets.TG_USER_ID }}  #非必须 tg机器人userId
-              DD_BOT_ACCESS_TOKEN: ${{ secrets.DD_BOT_ACCESS_TOKEN }}  #非必须 钉钉机器人token
-              DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}  #非必须 钉钉机器人secret
-    
+       - name: Checkout
+         uses: actions/checkout@v2
+       - name: "Set up Python"
+         uses: actions/setup-python@v1
+         with:
+             python-version: '3.x'
+       - name: "安装依赖包"
+         run: |
+             python -m pip install --upgrade pip
+             pip install requests
+             pip install rsa
+             pip install python-dateutil
+            - name: "运行 喜马拉雅极速版"
+              run: python3 xmly_speed.py
+              env:
+                  XMLY_ACCUMULATE_TIME: ${{ github.event.client_payload.XMLY_ACCUMULATE_TIME || secrets.XMLY_ACCUMULATE_TIME }}            
+                  XMLY_ACCUMULATE_INDEX: ${{ github.event.client_payload.XMLY_ACCUMULATE_INDEX || secrets.XMLY_ACCUMULATE_INDEX }}
+                  XMLY_ACCUMULATE_HOURS: ${{ github.event.client_payload.XMLY_ACCUMULATE_HOURS || secrets.XMLY_ACCUMULATE_HOURS }}
+                  XMLY_ANDROID_AGENT: ${{ github.event.client_payload.XMLY_ANDROID_AGENT || secrets.XMLY_ANDROID_AGENT }}
+                  XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}  #必须 cookie 多账号 \n 分割
+                  AUTO_TAKE_OUT: ${{ secrets.AUTO_TAKE_OUT }}  #非必须 是否自动提现支付宝20
+                  BARK: ${{ secrets.BARK }}  #非必须 bark通知
+                  SCKEY: ${{ secrets.SCKEY }}  #非必须 server酱通知
+                  TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}  #非必须 tg机器人token
+                  TG_USER_ID: ${{ secrets.TG_USER_ID }}  #非必须 tg机器人userId
+                  DD_BOT_ACCESS_TOKEN: ${{ secrets.DD_BOT_ACCESS_TOKEN }}  #非必须 钉钉机器人token
+                  DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}  #非必须 钉钉机器人secret
+                 # SYNCURL: https://raw.githubusercontent.com/shuye73/MyActions/main/xmly_speed.py
