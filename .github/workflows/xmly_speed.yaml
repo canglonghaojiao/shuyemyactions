@@ -21,6 +21,7 @@ jobs:
 
       - name: 'Install requests'
         run: |
+          cd ~/xmly
           pip install requests
           pip install rsa
           pip install python-dateutil
