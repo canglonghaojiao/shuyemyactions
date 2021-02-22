@@ -20,7 +20,11 @@ jobs:
           python-version: 3.7
 
       - name: 'Install requests'
-        run: pip install -r ./xmly/requirements.txt
+        run:
+          python -m pip install --upgrade pip
+          pip install requests
+          pip install rsa
+          pip install python-dateutil
       - name: 'run 喜马拉雅极速版'
         run: python3 ./xmly/xmly_speed.py
         env:
