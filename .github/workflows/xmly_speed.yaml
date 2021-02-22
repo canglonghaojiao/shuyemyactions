@@ -23,6 +23,7 @@ jobs:
         run: |
           pip install requests
           pip install rsa
+          pip install python-dateutil
       - name: 'run 喜马拉雅极速版'
         run: python3 xmly/xmly_speed.py
         env:
