@@ -21,12 +21,15 @@ jobs:
 
       - name: 'Install requests'
         run: |
+          cd ~/xmly
           python -m pip install --upgrade pip
           pip install requests
           pip install rsa
           pip install python-dateutil
       - name: 'run 喜马拉雅极速版'
-        run: python3 xmly/xmly_speed.py
+        run: |
+          cd ~/xmly
+          python3 xmly_speed.py
         env:
             XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}  #必须 cookie 多账号 \n 分割
             AUTO_TAKE_OUT: ${{ secrets.AUTO_TAKE_OUT }}  #非必须 是否自动提现支付宝20
