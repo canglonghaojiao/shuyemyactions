@@ -2,12 +2,9 @@
 华硕-爱奇艺
 仅支持Node，没有添加助力环节，仅完成可能获得京豆的任务；
 新手写脚本，难免有bug，能用且用。
-
+by i-chenzhe
 1 0 22-28 2 * https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_asus_iqiyi.js
 
-脚本内置了一个给作者任务助力的网络请求，默认开启，如介意请自行关闭。
-助力活动链接： https://h5.m.jd.com/babelDiy/Zeus/4ZK4ZpvoSreRB92RRo8bpJAQNoTq/index.html
-参数 helpAuthor = false
 */
 const $ = new Env('华硕-爱奇艺');
 const Dt = require('crypto-js');
