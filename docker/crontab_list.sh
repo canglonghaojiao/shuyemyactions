@@ -13,7 +13,7 @@
 # 京东女装盲盒
 9 0,12,18 * * * node /scripts/jd_nzmh.js >> /scripts/logs/jd_nzmh.log 2>&1
 # 美丽研究院
-9 0,12,18 * * * node /scripts/jd_beauty.js >> /scripts/logs/jd_beauty.log 2>&1
+0 0,12,18 * * * node /scripts/jd_beauty.js >> /scripts/logs/jd_beauty.log 2>&1
 # 华硕爱奇艺
 24 0,12,18 * * * node /scripts/jd_asus_iqiyi.js >> /scripts/logs/jd_asus_iqiyi.log 2>&1
 ##############长期活动##############
