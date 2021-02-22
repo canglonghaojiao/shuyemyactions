@@ -19,8 +19,11 @@ jobs:
           python-version: 3.7
          
       - name: 'Install requirements'
-        run: pip install -r ./requirements.txt 
-        
+        run:
+            python -m pip install --upgrade pip
+            pip install requests
+            pip install rsa
+            pip install python-dateutil
       - name: 'run 喜马拉雅极速版' 
         run: python3 xmly_speed.py 
         env:
@@ -31,4 +34,3 @@ jobs:
                   TG_BOT_TOKEN: ${{ github.event.client_payload.TG_BOT_TOKEN || secrets.TG_BOT_TOKEN }}
                   TG_USER_ID: ${{ github.event.client_payload.TG_USER_ID || secrets.TG_USER_ID }}
                   AUTO_TAKE_OUT: ${{ github.event.client_payload.AUTO_TAKE_OUT || secrets.AUTO_TAKE_OUT }}
-    
