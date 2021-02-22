@@ -26,10 +26,8 @@ jobs:
           pip install python-dateutil
       - name: '运行 【喜马拉雅可提现】'
         run: |
-          python3 quanx/xmly_speed.py
+          python3 xmly_speed.py
         env:
-          
-              
               XMLY_ACCUMULATE_TIME: ${{ github.event.client_payload.XMLY_ACCUMULATE_TIME || secrets.XMLY_ACCUMULATE_TIME }}            
               XMLY_ACCUMULATE_INDEX: ${{ github.event.client_payload.XMLY_ACCUMULATE_INDEX || secrets.XMLY_ACCUMULATE_INDEX }}
               XMLY_ACCUMULATE_HOURS: ${{ github.event.client_payload.XMLY_ACCUMULATE_HOURS || secrets.XMLY_ACCUMULATE_HOURS }}
