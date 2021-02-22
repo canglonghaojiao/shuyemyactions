@@ -24,6 +24,7 @@ jobs:
           pip install requests
           pip install rsa
           pip install python-dateutil
+          pip install web.py==0.40-dev1
       - name: '运行 【喜马拉雅可提现】'
         run: |
           python3 xmly_speed.py
