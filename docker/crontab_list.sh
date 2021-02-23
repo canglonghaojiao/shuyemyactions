@@ -21,6 +21,8 @@
 # 母婴跳一跳（22-27）
 5 0,12,18 22-27 2 * node /scripts/jd_jump_jump.js >> /scripts/logs/jd_jump_jump.log 2>&1
 ##############长期活动##############
+# 宠汪汪兑换
+0 0,8,12,16 * * * cd /scripts && node jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
 # 签到
 0 0,18 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
 # 东东超市兑换奖品
