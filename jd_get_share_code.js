@@ -1623,82 +1623,6 @@ async function getSgmh(timeout = 0) {
   })
 }
 
-// 环球挑战赛
-async function getGlobal() {
-  const JD_API_HOST = 'https://api.m.jd.com/',
-    actCode = 'visa-card-001'
-
-  async function getTask() {
-    return new Promise(resolve => {
-      $.get(
-        taskUrl('myTask', { activityCode: actCode }),
-        async (err, resp, data) => {
-          try {
-            if (err) {
-              console.log(`${JSON.stringify(err)}`)
-              console.log(`${$.name} API请求失败，请检查网路重试`)
-            } else {
-              if (safeGet(data)) {
-                data = JSON.parse(data)
-                if (data['code'] === '0') {
-                  const { timeLimitTask, commonTask } = data.result.data
-                  let task = [...timeLimitTask, ...commonTask]
-                  for (let vo of task) {
-                    if (vo['taskName'] === '每日邀请好友') {
-                      console.log(
-                        `【账号${$.index}（${
-                          $.nickName || $.UserName
-                        }）环球挑战赛】${
-                          vo['jingCommand']['keyOpenapp'].match(
-                            /masterPin":"(.*)","/
-                          )[1]
-                        }`
-                      )
-                      hqtzs.push(
-                        vo['jingCommand']['keyOpenapp'].match(
-                          /masterPin":"(.*)","/
-                        )[1]
-                      )
-                    }
-                  }
-                }
-              }
-            }
-          } catch (e) {
-            $.logErr(e, resp)
-          } finally {
-            resolve(data)
-          }
-        }
-      )
-    })
-  }
-
-  function taskUrl(function_id, body = {}) {
-    return {
-      url: `${JD_API_HOST}/client.action?functionId=${function_id}&body=${escape(
-        JSON.stringify(body)
-      )}&appid=global_mart&time=${new Date().getTime()}`,
-      headers: {
-        Cookie: cookie,
-        origin: 'https://h5.m.jd.com',
-        referer: 'https://h5.m.jd.com/',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': $.isNode()
-          ? process.env.JD_USER_AGENT
-            ? process.env.JD_USER_AGENT
-            : require('./USER_AGENTS').USER_AGENT
-          : $.getdata('JDUA')
-          ? $.getdata('JDUA')
-          : 'jdapp;iPhone;9.2.2;14.2;%E4%BA%AC%E4%B8%9C/9.2.2 CFNetwork/1206 Darwin/20.1.0',
-      },
-    }
-  }
-
-  // await getHome()
-  await getTask()
-}
-
 // @Turing Lab Bot
 let submit_bean_code = [] // 种豆得豆
 let submit_farm_code = [] // 东东农场互助码
@@ -1715,7 +1639,6 @@ let jdzz = [] // JD赚赚
 let jdnian = [] // JD炸年兽
 
 let jdSgmh = [] // 闪购盲盒
-let hqtzs = [] // 环球挑战赛
 
 function formatShareCodes(
   arr = [],
@@ -1746,7 +1669,6 @@ function formatShareCodes(
 function showFormatMsg() {
   console.log(`\n========== 【格式化互助码&】 ==========`)
   console.log(`\n提交机器人 @Turing Lab Bot\n`)
-  console.log(`/submit_activity_codes jdglobal  ${hqtzs.join('&')}\n`)
   console.log(`/submit_activity_codes bean ${submit_bean_code.join('&')}\n`)
   console.log(`/submit_activity_codes farm ${submit_farm_code.join('&')}\n`)
   console.log(`/submit_activity_codes pet ${submit_pet_code.join('&')}\n`)
@@ -1762,7 +1684,6 @@ function showFormatMsg() {
   //console.log(`/jdnian ${jdnian.join('&')}\n`)
 
   console.log(`\n========== 【格式化互助码==========`)
-  formatShareCodes(hqtzs, '环球挑战赛(2.22)', 'MyGlobal', 'ForOtherGlobal')
   formatShareCodes(submit_bean_code, '种豆得豆', 'MyBean', 'ForOtherBean')
   formatShareCodes(submit_farm_code, '东东农场', 'MyFruit', 'ForOtherFruit')
   formatShareCodes(submit_pet_code, '东东萌宠', 'MyPet', 'ForOtherPet')
@@ -1775,7 +1696,6 @@ function showFormatMsg() {
 
 async function getShareCodeAndAdd() {
   console.log(`======账号${$.index}开始======`)
-  await getGlobal()
   await getJdFactory() // 东东工厂
   await getJxFactory() // 京喜工厂
   await getJxNc() // 京喜农场
