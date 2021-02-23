@@ -1674,7 +1674,7 @@ function showFormatMsg() {
   console.log(`/submit_activity_codes pet ${submit_pet_code.join('&')}\n`)
   console.log(`/submit_activity_codes jxfactory ${submit_jxfactory_code.join('&')}\n`)
   console.log(`/submit_activity_codes ddfactory ${submit_ddfactory_code.join('&')}\n`)
-  //console.log(`/submit_zodiac_tempcode ${submit_zodiac_tempcode.join('&')}\n`)
+  console.log(`//submit_activity_codes sgmh ${jdSgmh.join('&')}\n`)
 
   console.log(`\n提交机器人 @Commit Code Bot\n`)
   //console.log(`/jdcash ${jdcash.join('&')}\n`)
