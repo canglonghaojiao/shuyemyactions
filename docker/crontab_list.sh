@@ -6,14 +6,10 @@
 34 9 * * * node /scripts/jd_xgyl.js >> /scripts/logs/jd_jd_xgyl.log 2>&1
 # 百变大咖秀第二期
 22 23,0,9 * * * node /scripts/jd_entertainment.js >> /scripts/logs/jd_entertainment.log 2>&1
-# 京东沃尔玛
+# 京东粉丝互动
 29 0,12,18 * * * node /scripts/jd_fanslove.js >> /scripts/logs/jd_fanslove.log 2>&1
 # 京东女装盲盒
 9 0,12,18 * * * node /scripts/jd_nzmh.js >> /scripts/logs/jd_nzmh.log 2>&1
-# 美丽研究院
-0 0,12,18 * * * node /scripts/jd_beauty.js >> /scripts/logs/jd_beauty.log 2>&1
-# 华硕爱奇艺
-0 0,12,18 * * * node /scripts/jd_asus_iqiyi.js >> /scripts/logs/jd_asus_iqiyi.log 2>&1
 ##############长期活动##############
 # 签到
 0 0,18 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
