@@ -116,5 +116,5 @@
 # 京东抽奖机
 22 0,12,18 * * *  node /scripts/jd_lotteryMachine.js >> /scripts/logs/jd_lotteryMachine.log 2>&1
 # 宠汪汪兑换
-0 0,8,12,16 * * * cd /scripts && node jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
+0 0,8,12,16 * * * node /scripts && node jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
 
