@@ -14,6 +14,8 @@
 0 0,12,18 * * * node /scripts/jd_asus_iqiyi.js >> /scripts/logs/jd_asus_iqiyi.log 2>&1
 # 美丽研究院
 0 0,9,12 * * * node /scripts/jd_beauty.js >> /scripts/logs/jd_beauty.log 2>&1
+# 京东国际盲盒
+0 9,12,20,21 * * * node /scripts/jd_global_mh.js >> /scripts/logs/jd_global_mh.log 2>&1
 ##############长期活动##############
 # 签到
 0 0,18 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
