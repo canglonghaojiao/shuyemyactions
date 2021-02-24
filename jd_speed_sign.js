@@ -443,7 +443,7 @@ async function cash() {
           } else {
             if (safeGet(data)) {
               data = JSON.parse(data);
-              console.log(data)
+              //console.log(data)
               $.total = data.data.goldBalance
             }
           }
