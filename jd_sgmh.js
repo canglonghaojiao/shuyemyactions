@@ -26,11 +26,11 @@ cron "20 8 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd
 const $ = new Env('闪购盲盒');
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-let appId = '1EFRRxA' , homeDataFunPrefix = 'interact_template', collectScoreFunPrefix = 'harmony', message = ''
+let appId = '1EFRXxg' , homeDataFunPrefix = 'interact_template', collectScoreFunPrefix = 'harmony', message = ''
 let lotteryResultFunPrefix = homeDataFunPrefix, browseTime = 6
 const inviteCodes = [
-  'T022v_13RxwZ91ffPR_wlPcNfACjVWmIaW5kRrbA@T018v_h6QBsa9VfeKByb1ACjVWmIaW5kRrbA@T016aGPImbWDIsNs9Zd1CjVWmIaW5kRrbA@T020anX1lb-5IPJt9JJyQH-MCjVWmIaW5kRrbA@T0225KkcRBoRp1SEJBP1nKIDdgCjVWmIaW5kRrbA@T0225KkcRR1K8wXXJxKiwaIIdACjVWmIaW5kRrbA@T0205KkcH1lQpB6qW3uX06FuCjVWmIaW5kRrbA',
-  'T022v_13RxwZ91ffPR_wlPcNfACjVWmIaW5kRrbA@T018v_h6QBsa9VfeKByb1ACjVWmIaW5kRrbA@T016aGPImbWDIsNs9Zd1CjVWmIaW5kRrbA@T020anX1lb-5IPJt9JJyQH-MCjVWmIaW5kRrbA@T0225KkcRBoRp1SEJBP1nKIDdgCjVWmIaW5kRrbA@T0225KkcRR1K8wXXJxKiwaIIdACjVWmIaW5kRrbA@T0205KkcH1lQpB6qW3uX06FuCjVWmIaW5kRrbA',
+  '',
+  '',
 ];
 const randomCount = $.isNode() ? 20 : 5;
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -120,7 +120,7 @@ function interact_template_getHomeData(timeout = 0) {
           for (let i = 0;i < data.data.result.taskVos.length;i ++) {
             console.log("\n" + data.data.result.taskVos[i].taskType + '-' + data.data.result.taskVos[i].taskName  + '-' + (data.data.result.taskVos[i].status === 1 ? `已完成${data.data.result.taskVos[i].times}-未完成${data.data.result.taskVos[i].maxTimes}` : "全部已完成"))
             //签到
-            if (data.data.result.taskVos[i].taskName === '邀人助力任务') {
+            if (data.data.result.taskVos[i].taskName === '邀请好友助力') {
               console.log(`您的好友助力码为:${data.data.result.taskVos[i].assistTaskDetailVo.taskToken}`)
               for (let code of $.newShareCodes) {
                 if (!code) continue
