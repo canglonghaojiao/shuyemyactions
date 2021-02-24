@@ -81,7 +81,7 @@
 | `MONEY_TREE_SELL_FRUIT`      | 摇钱树是否卖出金果           | 非必须 | false | 控制摇钱树脚本是否自动卖出金果兑换成金币，`true`卖出，`false`不卖出，默认`false`                                                                                                                                           |
 | `FACTORAY_WANTPRODUCT_NAME`  | 东东工厂心仪商品             | 非必须 |  | 提供心仪商品名称(请尽量填写完整和别的商品有区分度)，达到条件后兑换，如不提供则会兑换当前所选商品                                                                                                          |
 | `JXNCTOKENS`                 | 京喜农场TOKEN               | 非必须 |  | 每个账号 token 是一个 json，示例：{"farm_jstoken":"749a90f871adsfads8ffda7bf3b1576760","timestamp":"1610165423873","phoneid":"42c7e3dadfadsfdsaac-18f0e4f4a0cf"}，多账单间使用`&`或换行分开。                                    |
-##### 获取Token方式：
+##### 获取JXNCToken方式：
 1. 打开抓包软件
 2. 打开【❗️京喜农场❗️】，手动任意完成<工厂任务>、<签到任务>、<金牌厂长任务>一项
 3. 在抓取到的数据里面搜索token字样 找到上方示例的关键字，按照上方的格式填入配置文件即可
