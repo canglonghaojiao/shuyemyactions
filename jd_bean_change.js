@@ -167,7 +167,11 @@ function TotalBean() {
               $.isLogin = false; //cookie过期
               return
             }
-            $.nickName = data['base'].nickname;
+            if (data['retcode'] === 0) {
+              $.nickName = data['base'].nickname;
+            } else {
+              $.nickName = $.UserName
+            }
             $.levelName = data['base'].levelName;
             if (data['retcode'] === 0) {
               $.beanCount = data['base'].jdNum;
