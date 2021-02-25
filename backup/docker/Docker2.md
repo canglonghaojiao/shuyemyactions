@@ -54,7 +54,7 @@
 
 注⑥：群晖和威联通用户，以及其他非root用户的，请在ssh登陆后，切换为root用户再运行： `sudo -i`
 
-5.自动更新Docker容器（建议安装，能够自动同步我的docker镜像）
+5.自动更新Docker容器（除群晖之外，建议安装，能够自动同步我的docker镜像）
 安装`containrrr/watchtower`可以自动更新容器
 
     docker run -d \
