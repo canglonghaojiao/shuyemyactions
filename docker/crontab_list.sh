@@ -119,4 +119,6 @@
 22 0,12,18 * * *  node /scripts/jd_lotteryMachine.js >> /scripts/logs/jd_lotteryMachine.log 2>&1
 # 宠汪汪兑换
 0 0,8,12,16 * * * node /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
+# 京东会员抽京豆
+55 0,12 * * *  node /scripts/jd_plus_bean.js >> /scripts/logs/jd_plus_bean.log 2>&1
 
